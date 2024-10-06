@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const path = require("path");   
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
-const ExpressError = require("./utils/ExpressError.js");    // The ./ means "starting from the current directory"."If your current file is located at /Wanderlust/app.js, then ./utils/ExpressError.js refers to /Wanderlust/utils/ExpressError.js."
+const ExpressError = require("./utils/ExpressError.js");    
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
@@ -98,10 +98,8 @@ app.use((req,res,next)=>{
 // });
 
 
-// using express router for all "listings" related routes. All routes starting with or have "/listings" common are grouped together in listings.js in routes folder.
 app.use("/listings", listingRouter);
-app.use("/listings/:id/reviews", reviewRouter)   //the "id" parameter present here stays within the app.js file itself, it does not reach reviews.js. thats why after "console.log(req.params.id);" it prints undefined. But parameters ahead of this "id" do get delivered to reviews.js. We need this "id" parameter as well to reach reviews.js, so we use external option called "mergeParams". 
-// parent route : "/listings/:id/reviews" (common part), child route : "/ or /:reviewId (remaining part)".
+app.use("/listings/:id/reviews", reviewRouter)   
 app.use("/", userRouter);
 
 
