@@ -45,19 +45,19 @@ html, body {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column; /* Stack items on smaller screens */
-        height: auto; /* Adjust for a flexible height */
+        flex-direction: column; 
+        height: auto; 
     }
 
     .logo {
-        left: auto; /* Reset left for mobile view */
-        right: 10px; /* Position logo on the right */
-        top: 10px; /* Adjust for vertical placement */
+        left: auto; 
+        right: 10px; 
+        top: 10px; 
     }
 
     .nav-link {
-        margin: 5px 0; /* Stack links for mobile */
-        text-align: center; /* Center-align text */
+        margin: 5px 0; 
+        text-align: center; 
     }
 }
 
@@ -69,7 +69,7 @@ footer {
     padding: 1rem 0;
     text-align: center;
     width: 100%;
-    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a shadow to the top of the footer */
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); 
 }
 
 
@@ -81,10 +81,6 @@ footer {
     flex-wrap: wrap;
     justify-content: center;
     align-items: space-evenly;
-    /* position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%; */
 }
 
 .f-info-socials, .f-info-links, .f-info-brand{
@@ -192,19 +188,6 @@ p {
     margin-top: none !important;
     text-decoration: none;
 }
-
-/* .spot{
-    position: relative;
-    animation-name: example;
-    animation-duration: 5s;
-    animation-delay: 0s;
-}
-
-@keyframes example {
-    0%   {left:-850px;}
-    100% {left:20px;}
-} */
-
 
 .reveal{
     position: relative;
