@@ -30,7 +30,7 @@ module.exports.showListing = async (req,res)=>{
             path: "author",
         },
     })
-    .populate("owner");       //populate method is used to fill or replace a referenced field in one document with the actual data from another related document. It's commonly used when you're dealing with relationships between collections, such as one-to-many or many-to-many relationships.For example, let's say you have two collections: User and Post. Each Post might have a user field that references a document in the User collection. Using populate, you can replace that reference with the actual user data when querying posts.
+    .populate("owner");      
     if(!listing){
         req.flash("error" , "Listing you requested for does not exist !");
         res.redirect("/listings");
@@ -53,7 +53,7 @@ module.exports.renderEditForm = async (req,res)=>{
 
 module.exports.updateListing = async (req,res)=>{
     let {id} = req.params;
-    await Listing.findByIdAndUpdate(id, { ...req.body.listing });   // { ...req.body.listing } creates a new object and spreads (copies) all properties from req.body.listing into this new object.
+    await Listing.findByIdAndUpdate(id, { ...req.body.listing });   
     req.flash("success","Listing has been updated Successfully !");
     res.redirect(`/listings/${id}`);
 }
