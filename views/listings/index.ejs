@@ -1,0 +1,105 @@
+<%- layout('/layouts/boilerplate.ejs') %>
+
+    <body>
+        <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 justify-content-center">
+            <div class="col-12 justify-content-center">
+                <div class="top-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1605445374831-cfc7ea317813?q=80&w=1934&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        alt="Card Image 1" style="width : 20rem; height: 20rem;">
+                    </div>
+                    <div class="card-info">
+                        <h2>"The Stone Steps of Eldor"</h2>
+                        <p>Majestic mountain cliffs stand tall. This rugged terrain captures the essence of ancient geological wonders, Northen Ireland</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 justify-content-center">
+                <div class="top-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1605445369552-5fffdd8be57d?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        alt="Card Image 1" style="width : 20rem; height: 20rem;">
+                    </div>
+                    <div class="card-info">
+                        <h2>"Modern Loft in Downtown"</h2>
+                        <p>A tranquil harmony between the sea and the shore. Nature’s peaceful melody fills the air, Iceland.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 justify-content-center">
+                <div class="top-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1647696567309-e62c6910f985?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width : 20rem; height: 20rem;",
+                        alt="Card Image 1">
+                    </div>
+                    <div class="card-info">
+                        <h2>"Cozy Beachfront Cottage"</h2>
+                        <p>Escape to this charming beachfront cottage for a relaxing getaway,Malibu United States.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 justify-content-center">
+            <div class="col-12 justify-content-center">
+                <div class="top-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1605025175565-a2937cf2e7aa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        alt="Card Image 1" style="width : 20rem; height: 20rem;">
+                    </div>
+                    <div class="card-info">
+                        <h2>"Cascades of the Highlands"</h2>
+                        <p>Towering mountains cradle a majestic waterfall that cascades into a flowing river below, creating a scene of raw natural power and beauty, New Zealand.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 justify-content-center">
+                <div class="top-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1596306499317-8490232098fa?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        alt="Card Image 1" style="width : 20rem; height: 20rem;">
+                    </div>
+                    <div class="card-info">
+                        <h2>"Taung Kalat Monastery"</h2>
+                        <p>Hidden deep within the jungle, an ancient temple rises. Surrounded by lush greenery and towering mountains, it’s a sacred site shrouded in mystery, Myanmar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <br>
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 justify-content-center">
+            <% for( let listing of allListings ) { %>
+                    <a class="spot reveal" href="/listings/<%= listing._id %>">
+                        <div class="cards">
+                            <img src="<%= listing.image %>" class="card-img-top" alt="Listing Image" style="height: 20rem;">
+                            <div class="card-body">
+                                <b><%= listing.title %></b>
+                                <p>&#8377; <%= listing.price.toLocaleString("en-IN") %></p>
+                            </div>
+                        </div>
+                    </a>
+            <% } %>
+        </div>
+
+        
+        <!-- the anchor tags href /listings/:id route will open the specific listing and show its detailed description (It will send request to show route)-->
+    </body>
+
+
+
+    
+    
+
+
+
+    <!-- <div class="col-12 justify-content-center">
+        <div class="top-card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                alt="Card Image 1" style="width : 20rem; height: 20rem;">
+            </div>
+            <div class="card-info">
+                <h2>"Oasis of Tranquility"</h2>
+                <p> Nestled among lush greenery, the hotel overlooks serene ponds that reflect the surrounding paradise. A peaceful escape where luxury meets nature’s calm, Indonesia</p>
+            </div>
+        </div>
+    </div> -->
