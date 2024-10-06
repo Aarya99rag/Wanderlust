@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Listing = require("../models/listing.js");    // Moves up one directory level.Use this to navigate to the parent directory of the current file's directory.
+const Listing = require("../models/listing.js");    
 const initData = require("./data.js");
 
 main()
