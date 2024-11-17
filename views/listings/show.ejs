@@ -104,7 +104,7 @@
                                     <i class="fa-solid fa-star"></i>
                                     <% } %>
                             </p>
-                            <% if (currUser) { %>
+                            <% if (currUser && currUser._id.equals(listing.owner._id)) { %>
                                 <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
                                     method="post">
                                     <button class="btn btn-dark">Delete</button>
