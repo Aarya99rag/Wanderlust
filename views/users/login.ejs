@@ -1,0 +1,19 @@
+<%- layout('/layouts/boilerplate.ejs') %>
+
+    <body>
+        <br>
+        <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-2 justify-content-center">
+            <form action="/login" method="post" novalidate class="needs-validation back">
+                <h5 class="color-text">Enter User Details</h5><br>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Enter your Username : </label>
+                    <input type="text" class="form-control" name="username" placeholder="Enter username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Enter your Password : </label>
+                    <input type="text" class="form-control" name="password" placeholder="Enter Password" required>
+                </div><br>
+                <button class="btn btn-dark" style="width: 100px; background-color: rgb(38, 57, 77);">Login</button>
+            </form>
+        </div> <br>
+    </body>

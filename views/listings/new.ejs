@@ -1,0 +1,78 @@
+<%- layout('/layouts/boilerplate.ejs') %>
+
+    <body>
+        <br>
+        <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 justify-content-center">
+            <form action="/listings" method="post" novalidate class="needs-validation"
+                    enctype="multipart/form-data">
+                    <h5 class="color-text">Enter Listing Details :</h5><br>
+                    <div class="mb-3">
+                        <label for="title"
+                            class="form-label">Title</label><!-- Confirm that your form,s name attribute matches the expected field in the req.body. -->
+                        <input type="text" class="form-control" name="listing[title]" placeholder="Enter title"
+                            required>
+                        <div class="invalid-feedback">
+                            Invalid Title
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label" for="price">Price</label>
+                            <input name="listing[price]" placeholder="Enter price" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Invalid Price
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label" for="category">Select Category</label>
+                            <select class="form-select" size="4" name="listing[category]" id="category">
+                                <%- include("../includes/categoryForm.ejs") %>
+                            </select>                            
+                        </div>
+                    </div>
+                    <!-- <div class="mb-3">
+                    <label class="form-label" for="image">Image</label>
+                    <input type="text" name="listing[image]" class="form-control" placeholder="Add img/URL" >
+                </div> -->
+                    <div class="mb-3">
+                        <label class="form-label" for="image">Upload Listing Image</label>
+                        <input type="file" name="listing[image]" class="form-control" placeholder="Add img/URL"
+                            required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="place">Location</label>
+                                <input type="text" name="listing[location]" placeholder="Enter place"
+                                    class="form-control" required>
+                                <div class="invalid-feedback">
+                                    Invalid Place
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="country">Country</label>
+                                <input type="text" name="listing[country]" class="form-control"
+                                    placeholder="Enter place" required>
+                                <div class="invalid-feedback">
+                                    Invalid Country
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea placeholder="Add description here" class="form-control" name="listing[description]"
+                            required></textarea>
+                        <div class="invalid-feedback">
+                            Invalid Description
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-dark mt-3"
+                            style="width: 100px; background-color: rgb(38, 57, 77);">Add</button><br><br>
+                    </div>
+                </form>
+        </div>
+    </body>

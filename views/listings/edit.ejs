@@ -1,0 +1,70 @@
+<%- layout('/layouts/boilerplate.ejs') %>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-12">
+                <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate
+                    class="needs-validation" enctype="multipart/form-data">
+                    <h5 class="color-text">Edit Listing Details:</h5><br>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title:</label>
+                        <input value="<%= listing.title %>" type="text" class="form-control" name="listing[title]" required>
+                        <div class="invalid-feedback">
+                            Invalid Title
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description:</label>
+                        <textarea class="form-control" name="listing[description]" required><%= listing.description %></textarea>
+                        <div class="invalid-feedback">
+                            Invalid Description
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 mb-3">
+                            <p><u>Original listing Image</u></p>
+                            <img src="<%= OriginalListingImage %>" alt="Original Listing" class="img-fluid">
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-3">
+                            <label class="form-label" for="category">Select Category</label>
+                            <select class="form-select" size="4" name="listing[category]" id="category">
+                                <option value="<%= listing.category %>"><%= listing.category %></option>
+                                <%- include("../includes/categoryForm.ejs") %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 mb-3">
+                            <label class="form-label" for="place">Location:</label>
+                            <input type="text" name="listing[location]" value="<%= listing.location %>" class="form-control" required>
+                            <div class="invalid-feedback">Invalid Location</div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 mb-3">
+                            <label class="form-label" for="country">Country:</label>
+                            <input type="text" name="listing[country]" class="form-control" value="<%= listing.country %>" required>
+                            <div class="invalid-feedback">Invalid Country</div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 mb-3">
+                            <label class="form-label" for="price">Price:</label>
+                            <input type="number" name="listing[price]" value="<%= listing.price %>" class="form-control" required>
+                            <div class="invalid-feedback">Invalid Price</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="image">Update Image</label>
+                        <input type="file" name="listing[image]" class="form-control">
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-dark mt-3" style="background-color: rgb(38, 57, 77);">Edit</button><br><br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
