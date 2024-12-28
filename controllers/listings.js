@@ -3,36 +3,51 @@ const Listing = require("../models/listing.js");
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({}).sort({ _id: -1 });
   // want the newest documents to appear first, you can take advantage of MongoDB’s natural sorting by the _id field. The default _id field in MongoDB contains a timestamp embedded within it, which can be used for sorting documents by their insertion time. The _id field in MongoDB is an ObjectId that includes a timestamp of when the document was created. To retrieve documents in the order of their insertion, with the newest appearing first, you can sort by the _id field in descending order. _id Field: The default field that is added to every document in MongoDB. It’s an ObjectId type that contains a 4-byte timestamp as its first component. Sorting by _id: Sorting by _id in descending order (-1) will order documents based on their insertion time, with the most recently inserted documents appearing first.
-// Structure of ObjectId:
-// An ObjectId is a 12-byte identifier typically represented as a 24-character hexadecimal string. The structure is as follows:
+  // Structure of ObjectId:
+  // An ObjectId is a 12-byte identifier typically represented as a 24-character hexadecimal string. The structure is as follows:
 
-// 4-byte timestamp:
+  // 4-byte timestamp:
 
-// Represents the Unix timestamp (in seconds) of when the ObjectId was generated.
-// This timestamp allows for sorting documents by creation time without additional fields.
-// 5-byte random value:
+  // Represents the Unix timestamp (in seconds) of when the ObjectId was generated.
+  // This timestamp allows for sorting documents by creation time without additional fields.
+  // 5-byte random value:
 
-// Ensures uniqueness among different machines.
-// Generated using a machine identifier and process ID.
-// 3-byte incrementing counter:
+  // Ensures uniqueness among different machines.
+  // Generated using a machine identifier and process ID.
+  // 3-byte incrementing counter:
 
-// Starts with a random value and increments with each new ObjectId generated.
-// Ensures uniqueness even if multiple ObjectIds are created within the same second.
+  // Starts with a random value and increments with each new ObjectId generated.
+  // Ensures uniqueness even if multiple ObjectIds are created within the same second.
 
-// 64b8f1c9c2e27e29f0a12345
-// Timestamp: 64b8f1c9 (first 4 bytes)
-// Machine Identifier and Process ID: c2e27e29f0a1 (next 5 bytes)
-// Counter: 2345 (last 3 bytes)
+  // 64b8f1c9c2e27e29f0a12345
+  // Timestamp: 64b8f1c9 (first 4 bytes)
+  // Machine Identifier and Process ID: c2e27e29f0a1 (next 5 bytes)
+  // Counter: 2345 (last 3 bytes)
 
   res.render("listings/index.ejs", { allListings });
 };
 
-module.exports.categories = async(req,res)=>{
+module.exports.categories = async (req, res) => {
   let type = req.query.type;
-  let lists = await Listing.find({category:type});
+  let lists = await Listing.find({ category: type });
   // console.log(lists);
-  res.render("listings/category.ejs",{lists});
-}
+  res.render("listings/category.ejs", { lists });
+};
+
+module.exports.search = async (req, res) => {
+  let { query } = req.query;
+  let lists = await Listing.find({
+    $or: [
+      { title: { $regex: new RegExp(query, "i") } },
+      { location: { $regex: new RegExp(query, "i") } },
+      { country: { $regex: new RegExp(query, "i") } },
+    ],
+  });
+  if(!lists){
+    return res.send("No lists Found")
+  }
+  res.render("listings/category.ejs", {lists})
+};
 
 module.exports.renderNewForm = (req, res) => {
   res.render("listings/new.ejs");

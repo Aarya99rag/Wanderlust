@@ -7,9 +7,9 @@ const multer = require("multer");
 const { storage } = require("../cloudConfig.js");
 const upload = multer({ storage });
 
-router
-  .route("/category")
-  .get(wrapAsync(listingController.categories))
+router.route("/category").get(wrapAsync(listingController.categories));
+
+router.route("/search").get(wrapAsync(listingController.search));
 
 router
   .route("/")
@@ -21,7 +21,6 @@ router
     upload.single("listing[image]"),
     validateListing,
     wrapAsync(listingController.storeListing)
-    
   );
 
 // New Route
